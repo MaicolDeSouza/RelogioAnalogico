@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* Para incluir margin e padding ao tamnaho do box */
+    box-sizing: border-box;
+}
+
+body {
+    /* Adiciona uma cor gradiente de fundo com angulo de 45° e nas cores passadas */
+    background-image: linear-gradient(45deg, #4158d0 0%, #c450c0 30%, #ffcc70 100%);
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* Definicoes do relogio */
+.clock {
+    width: 500px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    border: 2px solid black;
+    /* Definindo position aqui podemos limitar a area dos numeros na classe .clock .number*/
+    position: relative;
+}
+
+/* Definicoes dos numeros do relogio */
+.clock .number {
+    /* Variavel para slavar o angulo de cada numero */
+    --rotation: 0;
+    /* Torna numeros em posicao absoluta com relacao a div que esta dentro */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background-color: red; */
+    text-align: center;
+    /* rotaciona ao longo do relogio cada numero com o angulo passado na variavel */
+    transform: rotate(var(--rotation));
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding: 15px;
+}
+
+.clock .number.number-1 {
+    --rotation: 30deg;
+}
+
+.clock .number.number-2 {
+    --rotation: 60deg;
+}
+
+.clock .number.number-3 {
+    --rotation: 90deg;
+}
+
+.clock .number.number-4 {
+    --rotation: 120deg;
+}
+
+.clock .number.number-5 {
+    --rotation: 150deg;
+}
+
+.clock .number.number-6 {
+    --rotation: 180deg;
+}
+
+.clock .number.number-7 {
+    --rotation: 210deg;
+}
+
+.clock .number.number-8 {
+    --rotation: 240deg;
+}
+
+.clock .number.number-9 {
+    --rotation: 270deg;
+}
+
+.clock .number.number-10 {
+    --rotation: 300deg;
+}
+
+.clock .number.number-11 {
+    --rotation: 330deg;
+}
+
+.clock .hand {
+    --rotation: 0;
+    position: absolute;
+    /* Alinha a linha de baixo ao centro do relogio */
+    bottom: 50%;
+    /* Alinha a linha da esquerda  ao centro do relogio */
+    left: 50%;
+    
+    /* Fixa o ponto fixo na parte de baixo do ponteiro */
+    transform-origin: bottom;
+    /* Mova no eixo X -50% da largura */
+    /* Rotaciona o ponteiro de acordo como valor de angulo passado */
+    transform: translateX(-50%) rotate(calc(var(--rotation)*1deg));
+    /* Para o ponteiro ficar por cima do numero */
+    z-index: 10;
+    /* Arredondar a ponta do ponteiro */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+.clock .hand.seconds{
+    width: 3px;
+    /* Altura do ponteiro da area que ocupa  */
+    height: 40%;
+    background-color: red;
+}
+
+.clock .hand.minutes{
+    width: 3px;
+    /* Altura do ponteiro da area que ocupa  */
+    height: 35%;
+    background-color: black;
+}
+
+.clock .hand.hours{
+    width: 10px;
+    /* Altura do ponteiro da area que ocupa  */
+    height: 25%;
+    background-color: black;
+}
+
+/* Bolinha do ponteiro */
+.clock::after{
+    /* cria um conteudo vazio */
+    content: '';
+    position: absolute;
+    background-color: grey;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+     /* Mova no eixo X e y -50% da largura */
+    transform: translate(-50%, -50%);
+    /* Para ficar acima dos ponteiros */
+    z-index: 11;
+
+
+}
